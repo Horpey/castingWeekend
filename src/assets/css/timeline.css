@@ -1,0 +1,866 @@
+h1 {
+    margin: .5em 0 .7em;
+    text-align: center
+}
+
+#howitworks .wrapper {
+    height: 100%;
+    padding-top: 1px
+}
+
+ul#howitworksLinks {
+    display: block;
+    margin: 0 auto 5em;
+    width: 39em
+}
+
+ul#howitworksLinks li {
+    display: block;
+    float: left;
+    position: relative;
+    width: 50%
+}
+
+ul#howitworksLinks li a span {
+    color: #5c5c5c;
+    text-transform: uppercase;
+    position: relative;
+    left: -5px;
+    top: 3px;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .05em
+}
+
+ul#howitworksLinks li a:hover span {
+    color: #fff
+}
+
+ul#howitworksLinks li .video {
+    margin-top: 14px;
+    float: left
+}
+
+ul#howitworksLinks li .video a {
+    display: block;
+    background: url(/img/skin/home/home-sprite.png) -916px -356px no-repeat;
+    width: 127px;
+    height: 24px
+}
+
+ul#howitworksLinks li .video a:hover {
+    background-position: -921px -392px
+}
+
+ul#howitworksLinks li a.playground {
+    margin-top: 14px;
+    display: block;
+    width: 138px;
+    height: 24px;
+    background: url(/img/skin/howitworks/sprite2.png) -14px -169px no-repeat;
+    outline: 0
+}
+
+ul#howitworksLinks li a.playground:hover {
+    background-position: -14px -220px
+}
+
+ul#howitworksLinks li a.playground span {
+    margin-left: 20px
+}
+
+#steps {
+    position: relative
+}
+
+#steps .wrapper {
+    position: relative;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+#steps .wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 18px;
+    height: 100%;
+    width: 4px;
+    background: #E7E7E7
+}
+
+#steps .steps-section {
+    /* background: url(/img/skin/howitworks/sprite2.png) -2px -5px no-repeat; */
+    width: 413px;
+    height: 53px;
+    position: relative;
+    z-index: 1;
+    left: -20px
+}
+
+#steps .steps-section:first-child {
+    top: -25px
+}
+
+#steps .steps-section::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    right: -5px;
+    height: 3px;
+    width: 5px;
+    background: #E7E7E7
+}
+
+#steps .steps-section h2 {
+    width: 344px;
+    color: #fff;
+    font-size: 36px;
+    font-weight: 300;
+    letter-spacing: .025em;
+    margin: 0;
+    position: relative;
+    top: 0em;
+    left: 2.7em;
+    padding: 13px 30px;
+    color: white;
+    font-size: 26px;
+    text-align: right;
+    background-color: #e7077d;
+    display: inline-block;
+    border-radius: 30px;
+    border: 4px solid #e7e7e7;
+}
+
+.steps-block {
+    position: relative;
+    margin: 2em 0
+}
+
+.steps-block.last {
+    margin-bottom: 0 !important
+}
+
+.steps-block.last::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 394px;
+    height: 1px;
+    width: 13px;
+    background: #E7E7E7
+}
+
+.steps-block:first-child {
+    margin-top: 0
+}
+
+.steps-content {
+    width: 250px;
+    margin-left: 95px;
+    position: relative;
+    z-index: 0
+}
+
+.steps-content p {
+    font-size: 16px;
+    font-weight: 300;
+    letter-spacing: .025em;
+    color: #686868
+}
+
+.steps-icon {
+    position: absolute;
+    left: 384px;
+    top: 0;
+    z-index: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 40px;
+    background-color: #e7077d;
+    /* background: url(/img/m/circle_arrow.svg) 0 0/contain no-repeat */
+}
+
+.steps-icon.mid {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.steps-icon.bottom {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+
+.steps-img {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    width: 100vh !important;
+}
+
+.steps-block .videoframe {
+    /* background: url(/img/skin/howitworks/frame.png) no-repeat; */
+    width: 578px;
+    height: 362px
+}
+
+.steps-block .videoframe>div {
+    width: 560px;
+    height: 315px;
+    position: relative;
+    left: 7px;
+    top: 32px
+}
+
+.steps-block .videoframe video {
+    width: 100%;
+    height: auto
+}
+
+.steps-img .layer {
+    position: absolute
+}
+
+#s11,
+#s12,
+#s13,
+#s31,
+#s32 {
+    height: 362px;
+    margin-bottom: 90px
+}
+
+#s11.steps-block {
+    margin-top: -20px
+}
+
+#s11 .steps-content,
+#s11 .steps-icon {
+    top: 9em
+}
+
+#s12 .steps-content,
+#s12 .steps-icon {
+    top: 13em
+}
+
+#s13 .steps-content,
+#s13 .steps-icon {
+    top: 10em
+}
+
+#s21,
+#s22,
+#s23,
+#s24 {
+    height: 315px;
+    margin-bottom: 90px
+}
+
+#s21 .steps-content,
+#s21 .steps-icon {
+    top: 8em
+}
+
+#s22 .steps-content,
+#s22 .steps-icon {
+    top: 9em
+}
+
+#s23 .steps-content,
+#s23 .steps-icon {
+    top: 10em
+}
+
+#s24 .steps-content,
+#s24 .steps-icon {
+    top: 6em
+}
+
+#s21 .steps-img {
+    /* background: url(/img/skin/howitworks/step2a.png) no-repeat */
+}
+
+#s21 .steps-img .layer {
+    opacity: 0;
+    width: 431px;
+    height: 341px;
+    top: 9px;
+    left: 76px;
+    /* background: url(/img/skin/howitworks/step2a-1.png) no-repeat */
+}
+
+#s22 .steps-img {
+    /* background: url(/img/skin/howitworks/step2b.png) no-repeat; */
+    overflow: hidden
+}
+
+@-webkit-keyframes fadeInDown2 {
+    0% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: translate3d(0, -5%, 0);
+        -moz-transform: translate3d(0, -5%, 0);
+        transform: translate3d(0, -5%, 0)
+    }
+    100% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: none;
+        -moz-transform: none;
+        transform: none
+    }
+}
+
+@-moz-keyframes fadeInDown2 {
+    0% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: translate3d(0, -5%, 0);
+        -moz-transform: translate3d(0, -5%, 0);
+        transform: translate3d(0, -5%, 0)
+    }
+    100% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: none;
+        -moz-transform: none;
+        transform: none
+    }
+}
+
+@-o-keyframes fadeInDown2 {
+    0% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: translate3d(0, -5%, 0);
+        -moz-transform: translate3d(0, -5%, 0);
+        transform: translate3d(0, -5%, 0)
+    }
+    100% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: none;
+        -moz-transform: none;
+        transform: none
+    }
+}
+
+@keyframes fadeInDown2 {
+    0% {
+        opacity: 0;
+        filter: alpha(opacity=0);
+        -webkit-transform: translate3d(0, -5%, 0);
+        -moz-transform: translate3d(0, -5%, 0);
+        transform: translate3d(0, -5%, 0)
+    }
+    100% {
+        opacity: 1;
+        filter: alpha(opacity=100);
+        -webkit-transform: none;
+        -moz-transform: none;
+        transform: none
+    }
+}
+
+.fadeInDown2 {
+    -webkit-animation-name: fadeInDown2;
+    animation-name: fadeInDown2
+}
+
+#s22 .steps-img .layer1 {
+    opacity: 0;
+    width: 191px;
+    height: 292px;
+    top: 23px;
+    left: 0;
+    /* background: url(/img/skin/howitworks/step2b-1.png) no-repeat */
+}
+
+#s22 .steps-img .layer2 {
+    opacity: 0;
+    width: 176px;
+    height: 226px;
+    top: 90px;
+    left: 149px;
+    /* background: url(/img/skin/howitworks/step2b-2.png) no-repeat */
+}
+
+#s23 .steps-img {
+    /* background: url(/img/skin/howitworks/step2c.png) no-repeat */
+}
+
+#s23 .steps-img .layer {
+    opacity: 0;
+    width: 562px;
+    height: 345px;
+    top: 9px;
+    left: 0;
+    /* background: url(/img/skin/howitworks/step2c-1.png) no-repeat */
+}
+
+#s24 .steps-img {
+    /* background: url(/img/skin/howitworks/step2d.png) no-repeat */
+}
+
+#s24 .steps-img .layer {
+    opacity: 0;
+    width: 516px;
+    height: 406px;
+    top: -39px;
+    left: 40px;
+    /* background: url(/img/skin/howitworks/step2d-1.png) no-repeat */
+}
+
+#s31 .steps-content,
+#s31 .steps-icon,
+#s32 .steps-content,
+#s32 .steps-icon {
+    top: 10em
+}
+
+#howitworks #seo {
+    background: #F9F9F9;
+    height: 740px
+}
+
+#howitworks #seo h2 {
+    font-size: 26px;
+    font-weight: 400;
+    color: #000;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    line-height: 1.3em;
+    margin-top: 4em;
+    text-align: center
+}
+
+#howitworks #seo ul {
+    margin: 5em 0 0
+}
+
+#howitworks #seo ul li {
+    display: block;
+    float: left;
+    width: 25%
+}
+
+#howitworks #seo ul li>div {
+    width: 178px;
+    height: 118px;
+    /* background: url(/img/skin/howitworks/sprite2.png) -37px -468px no-repeat; */
+    margin: 0 auto 2em
+}
+
+#howitworks #seo ul li.item1,
+#howitworks #seo ul li.item2 {
+    margin-right: 12.5%
+}
+
+#howitworks #seo ul li.item2>div {
+    background-position: -407px -468px
+}
+
+#howitworks #seo ul li.item3>div {
+    background-position: -776px -468px
+}
+
+#howitworks #seo ul li p {
+    font-size: 14px;
+    font-weight: 300;
+    color: #444;
+    letter-spacing: .025em;
+    line-height: 1.5em
+}
+
+#howitworks #seo ul li p small {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0
+}
+
+#howitworks #support {
+    background: #D2EBEF;
+    height: 647px
+}
+
+#howitworks #support .wrapper {
+    background: url(/img/skin/howitworks/support.png) right bottom no-repeat
+}
+
+#howitworks #support h2 {
+    font-size: 64px;
+    font-weight: 300;
+    color: #000;
+    line-height: 1.3em;
+    margin-top: 2.5em
+}
+
+#howitworks #support h2 b {
+    display: block;
+    font-weight: 400;
+    text-transform: uppercase
+}
+
+#howitworks #support p {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: .05em;
+    color: #000;
+    width: 45%
+}
+
+@media only screen and (min-width:1043px) {
+    #steps .wrapper {
+        margin-top: 7em;
+        margin-bottom: 7em
+    }
+    #steps .wrapper::before {
+        left: 400px;
+        margin-left: -2px
+    }
+}
+
+@media only screen and (min-width:769px) and (max-width:1043px) {
+    #footerFiller,
+    #headerFiller {
+        display: none
+    }
+    #site-body,
+    #site-footer,
+    #site-header,
+    #site-header-footer,
+    #site-header.stuck {
+        width: 100%;
+        min-width: 100%
+    }
+    #howitworks {
+        font-size: 16px
+    }
+    #howitworks .wrapper {
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto
+    }
+    ul#howitworksLinks {
+        width: 26em
+    }
+    #steps .wrapper {
+        margin-top: 7em;
+        margin-bottom: 7em
+    }
+    #steps .wrapper::before {
+        left: 30%;
+        margin-left: -2px
+    }
+    #steps .steps-section {
+        width: 100%;
+        left: -12%
+    }
+    #steps .steps-section::after {
+        content: '';
+        background: 0 0;
+        display: none
+    }
+    #steps .steps-section h2 {
+        font-size: 1.6em;
+        position: absolute;
+        top: .5em;
+        left: 3.7em;
+        right: auto
+    }
+    #steps .steps-section h2:first-child {
+        left: 4.7em
+    }
+    .steps-content {
+        margin-left: 4%;
+        width: 20%
+    }
+    .steps-content p {
+        font-size: 1em
+    }
+    .steps-icon {
+        left: 28.5%
+    }
+    .steps-img {
+        z-index: 0;
+        left: 36%;
+        right: auto
+    }
+    .steps-block .videoframe {
+        background-size: contain
+    }
+    .steps-block.last::after {
+        left: 29.3%
+    }
+    #s11 .steps-content,
+    #s11 .steps-icon,
+    #s13 .steps-content,
+    #s13 .steps-icon,
+    #s21 .steps-content,
+    #s21 .steps-icon {
+        top: 5em
+    }
+    #s12 .steps-content,
+    #s12 .steps-icon {
+        top: 10em
+    }
+    #s22 .steps-content,
+    #s22 .steps-icon,
+    #s24 .steps-content,
+    #s24 .steps-icon {
+        top: 6em
+    }
+    #s23 .steps-content,
+    #s23 .steps-icon,
+    #s31 .steps-content,
+    #s31 .steps-icon,
+    #s32 .steps-content,
+    #s32 .steps-icon {
+        top: 7em
+    }
+    #howitworks #support {
+        background-color: #D2EBEF;
+        background-image: url(/img/skin/howitworks/support.png);
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        background-size: auto 85%
+    }
+    #howitworks #support .wrapper {
+        background: 0 0
+    }
+    #howitworks #support h2 {
+        font-size: 3em;
+        margin-top: 1.9em
+    }
+    #howitworks #support p {
+        font-size: 1em
+    }
+}
+
+@media only screen and (min-width:769px) and (max-width:924px) {
+    .steps-block .videoframe {
+        width: 462.4px;
+        height: 289.6px;
+        margin-top: 6em
+    }
+    .steps-block .videoframe>div {
+        width: 448px;
+        height: 251px;
+        position: relative;
+        left: 6px;
+        top: 26px
+    }
+    .steps-block.last .videoframe {
+        margin-top: 4em
+    }
+    #s11 .steps-content,
+    #s11 .steps-icon {
+        top: 9em
+    }
+    #s13 .steps-content,
+    #s13 .steps-icon {
+        top: 7em
+    }
+    .steps-img {
+        width: 448px;
+        height: 252px;
+        background-size: contain !important
+    }
+    .steps-img .layer {
+        background-size: contain !important
+    }
+    #s21 .steps-content,
+    #s21 .steps-icon,
+    #s22 .steps-content,
+    #s22 .steps-icon,
+    #s23 .steps-content,
+    #s23 .steps-icon {
+        top: 2em
+    }
+    #s24 .steps-content,
+    #s24 .steps-icon {
+        top: 1em
+    }
+    #s21 .steps-img .layer {
+        width: 344.8px;
+        height: 272.8px;
+        top: 9px;
+        left: 60px
+    }
+    #s22 .steps-img .layer1 {
+        width: 152.8px;
+        height: 233.6px;
+        top: 18px;
+        left: 0
+    }
+    #s22 .steps-img .layer2 {
+        width: 140.8px;
+        height: 180.8px;
+        top: 75px;
+        left: 124px
+    }
+    #s23 .steps-img .layer {
+        width: 449.6px;
+        height: 276px;
+        top: 2px;
+        left: 3px
+    }
+    #s24 .steps-img .layer {
+        width: 412.8px;
+        height: 324.8px;
+        top: -39px;
+        left: 30px
+    }
+    #howitworks #seo h2 {
+        margin-top: 3em;
+        font-size: 1.5em
+    }
+    #howitworks #seo ul {
+        margin-top: 2em
+    }
+    #howitworks #support p {
+        width: 35%
+    }
+}
+
+@media only screen and (max-width:768px) {
+    ul#howitworksLinks {
+        width: 30em
+    }
+    #steps .steps-section {
+        background: 0 0
+    }
+    #steps .steps-section::before {
+        content: '';
+        position: absolute;
+        /* background: url(/img/skin/howitworks/sprite2.png) -2px -5px no-repeat; */
+        width: 413px;
+        height: 53px;
+        z-index: 0;
+        left: 43px;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH"
+    }
+    #steps .steps-section::after {
+        right: auto;
+        left: 38px
+    }
+    #steps .steps-section h2 {
+        left: 5em;
+        font-size: 1em;
+        top: .4em;
+        width: 232px;
+    }
+    #steps {
+        margin-bottom: 5em;
+        margin-top: 3em;
+    }
+    .steps-block {
+        margin-top: 0px;
+        height: auto !important;
+        margin-bottom: 0 !important
+    }
+    .steps-content {
+        top: 0 !important;
+        margin-left: 3em;
+        width: 100%
+    }
+    .steps-content p {
+        width: 79%;
+        margin-bottom: 0em;
+    }
+    .steps-icon {
+        top: .5em !important;
+        left: 0
+    }
+    .steps-img {
+        position: relative;
+        right: auto;
+        top: 0;
+        left: 2.5em;
+    }
+    .steps-block.last::after {
+        left: 1.1em
+    }
+    #howitworks #seo ul li {
+        width: 100%;
+        clear: both;
+        margin-bottom: 2em
+    }
+    #howitworks #seo ul li:last-child {
+        margin-bottom: 3em
+    }
+    #howitworks #seo ul li.item1,
+    #howitworks #seo ul li.item2 {
+        margin-right: 0
+    }
+    #howitworks #seo ul li>div {
+        float: left;
+        margin-right: 2em
+    }
+    #howitworks #seo ul li p {
+        width: 70%;
+        float: left
+    }
+    #howitworks #seo ul li.item1>div,
+    #howitworks #seo ul li.item3>div {
+        margin-top: 2em
+    }
+    #howitworks #seo ul li.item2 {
+        margin-bottom: 0
+    }
+    #howitworks #seo ul li.item2>div {
+        margin-top: 1em
+    }
+    #howitworks #support {
+        background-color: #D2EBEF;
+        background-image: url(/img/skin/howitworks/support.png);
+        background-position: right bottom;
+        background-repeat: no-repeat;
+        background-size: auto 90%
+    }
+    #howitworks #support .wrapper {
+        background: 0 0
+    }
+    #howitworks #support h2 {
+        font-size: 3em !important
+    }
+    #howitworks #support p {
+        font-size: 1.3em;
+        width: 39%
+    }
+    #steps .steps-section:first-child {
+        top: -44px;
+    }
+    #steps .wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 14px;
+        height: 100%;
+        width: 4px;
+        background: #E7E7E7;
+    }
+    .timeline-image {
+        width: 75vw;
+    }
+    .steps-block .videoframe>div {
+        height: 204px !important;
+    }
+    .steps-block .videoframe {
+        height: 193px !important;
+    }
+}
