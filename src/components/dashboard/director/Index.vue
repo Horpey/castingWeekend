@@ -4,10 +4,11 @@
 		<div class="wrapper">
             <div class="container">
                 <div class="row">
-					<div class="col-md-12 col-lg-12 col-xl-4">
+					<div class="col-md-12 col-lg-12 col-xl-4" v-show="$route.path != '/project/createAudition/'">
 						<sidebar/>
 					</div>
-					<div class="col-xl-8">
+					<!-- Condition for Create Audition -->
+					<div v-bind:class="{ 'col-xl-8': $route.path != '/project/createAudition/' , 'col-xl-12': $route.path === '/project/createAudition/'}">
 						<router-view></router-view>
 					</div>
                 </div>
@@ -37,6 +38,7 @@ export default {
 		};
 	},
 	mounted() {
+		console.log(this.$route.path);
 		this.loading = true;
 		axios.get('https://jsonplaceholder.typicode.com/todos/1').then(
 			response => {
@@ -49,12 +51,12 @@ export default {
 			}
 		);
 	},
-	updated () {
-	    console.log('Meant to go back');
-	    if (!localStorage.token && this.$route.path !== '/') {
-	      this.$router.push('/?redirect=' + this.$route.path)
-	    }
-	}
+	updated() {
+		console.log('Meant to go back');
+		if (!localStorage.token && this.$route.path !== '/') {
+			this.$router.push('/?redirect=' + this.$route.path);
+		}
+	},
 };
 </script>
 
@@ -65,16 +67,15 @@ export default {
 @import '../../../assets/assets/css/style.css';
 @import '../../../assets/assets/css/sidebar.css';
 
-
 .wrapper {
-    padding-top: 160px!important;
+	padding-top: 160px !important;
 }
 
 .home-footer {
 	display: none !important;
 }
 
-.home-headerr{
+.home-headerr {
 	display: none !important;
 }
 

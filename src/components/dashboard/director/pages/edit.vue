@@ -3,8 +3,8 @@
         <loader v-if="loading"/>
         <div class="card m-b-30">
             <div class="card-body">
-                <h3>{{detailsData.data.project_title}} - Project Roles
-                    <router-link class="mdb role-add float-right" v-bind:to="'/project/addRole/'+detailID">Add Role</router-link>
+                <h3>Edit Project
+                    <router-link class="mdb role-add float-right" v-bind:to="'/director/projects'">View Projects</router-link>
 
                 </h3>
                 <hr>
@@ -18,7 +18,7 @@
                                         {{role.role_name}}
                                     </h2>
                                     <p>
-                                        <b class="col-ppd">Description</b>: <span class="desc-limit">{{role.description}} </span></p>
+                                        <b class="col-ppd">Description</b>: {{role.description}}</p>
                                     <p>
                                         <b class="col-ppd">Applicant</b>: {{role.applicants}}</p>
                                     <p>
@@ -44,7 +44,7 @@
 import axios from 'axios';
 import Loader from '../template/loader';
 export default {
-	name: 'details',
+	name: 'edit',
 	data() {
 		return {
 			loading: true,
@@ -97,13 +97,4 @@ export default {
 </script>
 
 <style>
-.desc-limit {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	line-height: 16px;
-	max-height: 97px;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-}
 </style>

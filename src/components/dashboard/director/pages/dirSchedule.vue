@@ -5,7 +5,6 @@
             <div class="card-body">
                 <p class="cv1">
                     <b class="col-ppd">Event Schedules</b>
-
                     <a data-toggle="modal" data-target="#fixappointment" class="mdb float-right text-white" style="cursor: pointer;">Add</a>
 
                 </p>
@@ -22,8 +21,27 @@
 
                     </tbody>
                     <tbody>
-
-                                                
+                        <tr v-for="(schedule, index) in scheduleData.data.list">
+                            <td>{{index}}</td>
+                            <td>{{schedule.title}}</td>
+                            <td>{{schedule.date}}</td>
+                            <td>{{schedule.time}}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Action
+                                        <span class="caret"></span>
+                                    </button>
+                                    <div id="pos">
+                                        <ul class="dropdown-menu">
+                                            <li>
+                                                <a class="dropdown-item" href="http://stage.cast.i.ng/delete/event/4" onclick="return confirm('Are you sure?');">Delete</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>                     
                     </tbody>
                 </table>
             </div>
@@ -39,12 +57,38 @@ export default {
     data() {
         return {
             loading: true,
+            scheduleData: "",
+            token: '',
+            siteUrl: "http://stage.cast.i.ng/",
         };
     },
     components: {
         loader: Loader,
     },
     mounted() {
+
+        this.token = JSON.parse(localStorage.getItem('token'));
+        console.log(this.token);
+
+        this.loading = true;
+
+        var config = {
+            headers: {'Access-Control-Allow-Origin': '*'}
+        };
+
+        let userID = JSON.parse(localStorage.getItem('token'));
+        // console.log(userID);
+
+        axios({ method: "GET", "url": 'https://api.cast.i.ng/event/schedules/'+userID , config }).then(result => {
+            this.loading = false;
+            this.scheduleData = result;
+        }, error => {
+            this.loading = false;
+            console.log('API CALL FAILED');
+            console.error(error);
+        });
+
+
         this.loading = true;
         axios.get('https://jsonplaceholder.typicode.com/todos/1').then(
             response => {

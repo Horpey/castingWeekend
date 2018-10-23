@@ -3,75 +3,38 @@
         <loader v-if="loading"/>
         <div class="card m-b-30">
             <div class="card-body">
-
-                <div>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-md-6">
-                            <p class="cv1">
-                                <b class="col-ppd">Attributes</b>
-                            </p>
-                            <div>
-
-                                <b>Gender:</b> 
-                                <span class="float-right">{{profileData.data.attributes.gender}}</span> 
-
-                                <div class="bline"></div>
-                                <b>State:</b> 
-                                <span class="float-right">{{profileData.data.profile.state}}</span> 
-
-
-                                <div class="bline"></div>
-                                <b>Height:</b> <span class="float-right">{{profileData.data.attributes.height}} In</span> 
-
-                                <div class="bline"></div> 
-                                <b>Weight:</b> <span class="float-right">{{profileData.data.attributes.weight}} In</span> 
-
-                                <div class="bline"></div> 
-                                <b>Complexion:</b> <span class="float-right">{{profileData.data.attributes.complexion_title}}</span> 
-
-                                                
-                                <div class="bline"></div> 
-                                <b>Body Mass (in KG):</b> <span class="float-right">{{profileData.data.attributes.body_mass}} kg</span>      
-                            </div>
-
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="img-preview" :style="{'background': ' url('+ profileData.data.profile.image + ')' }">
                         </div>
-                        
-                        <div class="col-md-6">
-                            <p class="cv1">
-                                <b class="col-ppd">Sizes</b>
-                            </p>
-                            <div>
 
-                                 <div class="bline"></div> 
-                                 <b>Shirt Size (in Inches):</b> <span class="float-right">{{profileData.data.attributes.shirt_size}} In</span> 
+                    </div>
+                    <div class="col-md-9">
+                        <h4>{{profileData.data.profile.lastname}} {{profileData.data.profile.firstname}}</h4>
+                        <hr>
+                        <div class="d-inline">
+                            <button class="btn btn-secondary" data-toggle="modal" data-target="#rateApplicant" >
+                                Rate Applicant </button>
+                        </div>
 
-                                 <div class="bline"></div> 
-                                 <b>Waist Size (in Inches):</b> <span class="float-right">{{profileData.data.attributes.shirt_size}} In</span>
-
-                                <div class="bline"></div>
-                                <b>Trouser length (in Inches):</b> 
-                                <span class="float-right">{{profileData.data.attributes.trouser_length}} In</span> 
-
-                                <div class="bline"></div>
-                                <b>Shoulder length (in Inches):</b> <span class="float-right">{{profileData.data.attributes.shoulder_length}} In</span> 
-
-                                <div class="bline"></div> 
-                                <b>Jacket size:</b> <span class="float-right">{{profileData.data.attributes.jacket_size}} In</span> 
-
-                                <div class="bline"></div> 
-                                <b>Shoe Size:</b> <span class="float-right">{{profileData.data.attributes.shoe_size}} In</span>
-
+                        <div class="dropdown d-inline">
+                            <button type="button" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle" aria-expanded="false">
+                                Share Profile<span class="caret"></span></button>
+                            <div id="pos">
+                                <ul class="dropdown-menu">
+                                    <li><a target="_blank" href="#" class="dropdown-item">Facebook</a></li>
+                                    <li><a target="_blank" href="#" class="dropdown-item">Twitter</a></li>
+                                    <li><a target="_blank" href="#" class="dropdown-item">Download PDF</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <p class="cv1">
-                        <b class="col-ppd">Feature Film</b>
-
-                        <a class="mdb float-right text-white" data-toggle="modal" data-target="#addjob" style="cursor: pointer;">Add Film</a>
-
-                    </p>
-
+                </div>
+                <div>
                     <div class="mt-2">
+                        <p class="cv1">
+                            <b class="col-ppd">Feature Film</b>
+                        </p>
                         <table class="table table-striped mb-0">
                             <tr>
                                 <td>
@@ -88,9 +51,6 @@
                                 </td>
                                 <td>
                                     <b>Production Company</b>
-                                </td>
-                                <td>
-                                    <b>Action</b>
                                 </td>
                             </tr>
 
@@ -102,10 +62,6 @@
                                     <td>{{feature.role}}</td>
                                     <td>{{feature.director}}</td>
                                     <td>{{feature.production_company}}</td>
-                                    <td>
-                                        
-                                        <button v-on:click="deleteJob(feature.id)" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -114,8 +70,6 @@
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">TV Series</b>
-
-                            <a class="mdb float-right text-white" data-toggle="modal" data-target="#addjob" style="cursor: pointer;">Add TV</a>
 
                         </p>
                         <table class="table table-striped mb-0">
@@ -134,9 +88,6 @@
                                 </td>
                                 <td>
                                     <b>Production Company</b>
-                                </td>
-                                <td>
-                                    <b>Action</b>
                                 </td>
                             </tr>
                             <tbody>
@@ -147,10 +98,6 @@
                                     <td>{{tv.role}}</td>
                                     <td>{{tv.director}}</td>
                                     <td>{{tv.production_company}}</td>
-                                    <td>
-                                        
-                                        <button v-on:click="deleteJob(tv.id)" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -159,8 +106,6 @@
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Web Series</b>
-
-                            <a class="mdb float-right text-white" data-toggle="modal" data-target="#addjob" style="cursor: pointer;">Add WEB</a>
                         </p>
                         <table class="table table-striped mb-0">
                             <tr>
@@ -179,9 +124,6 @@
                                 <td>
                                     <b>Production Company</b>
                                 </td>
-                                <td>
-                                    <b>Action</b>
-                                </td>
                             </tr>
                             <tbody>
                                 <tr v-for="web in profileData.data.webseries">
@@ -191,10 +133,6 @@
                                     <td>{{web.role}}</td>
                                     <td>{{web.director}}</td>
                                     <td>{{web.production_company}}</td>
-                                    <td>
-                                        
-                                        <button v-on:click="deleteJob(web.id)" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -203,8 +141,6 @@
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Theater/Stage Plays</b>
-
-                            <a class="mdb float-right text-white" data-toggle="modal" data-target="#addjob" style="cursor: pointer;">Add Theatre</a>
                         </p>
 
                         <div class="mt-2">
@@ -225,9 +161,6 @@
                                      <td>
                                         <b>Production Company</b>
                                     </td>
-                                    <td>
-                                        <b>Action</b>
-                                    </td>
                                 </tr>
                                 <tbody>
                                     <tr v-for="theater in profileData.data.theater">
@@ -237,10 +170,6 @@
                                         <td>{{theater.role}}</td>
                                         <td>{{theater.director}}</td>
                                         <td>{{theater.production_company}}</td>
-                                        <td>
-                                            
-                                            <button v-on:click="deleteJob(theater.id)" class="btn btn-outline-danger btn-sm">Delete</button>
-                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -269,8 +198,6 @@
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Trainings And Education</b>
-
-                            <a class="mdb float-right text-white" data-toggle="modal" data-target="#addeducation" style="cursor: pointer;">Add Education</a>
                         </p>
                         <div style="margin-top: 12px;" class="alert" v-bind:class="{ success: status, danger: !status }" v-if="error">{{ error }}</div>
                         <table class="table table-striped mb-0">
@@ -281,10 +208,6 @@
                                         <i class="fa fa-calendar"></i> {{education.year}}</td>
                                     <td>{{education.school}}</td>
                                     <td>{{education.certificate}}</td>
-                                    <td class="float-right">
-                                        
-                                        <button v-on:click="deleteEducation(education.id)" class="btn btn-outline-danger btn-sm">Delete</button>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -293,14 +216,12 @@
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Photo</b>
-                            <router-link class="mdb float-right" v-bind:to="'/dashboard/photo'">View All Photo</router-link>
                         </p>
 
                         <div class="row no-gutters mt-2">
                             <div class="col-md-3 p-1" v-for="photo in photoData.data.list">
                                 <a :href="siteUrl + photo.image" data-fancybox="gallery">
-                                    <img class="rounded mx-auto d-block img-fluid" alt="200x200" :src="siteUrl + photo.image" data-holder-rendered="true" /> 
-                                    <a href="#" class="mv"><i class="fa fa-trash-o"></i> Delete</a>
+                                    <img class="rounded mx-auto d-block img-fluid" alt="200x200" :src="siteUrl + photo.image" data-holder-rendered="true" />
                                 </a>
                             </div>
                         </div>
@@ -309,8 +230,6 @@
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Video</b>
-
-                            <router-link class="mdb float-right" v-bind:to="'/dashboard/video'">View All Video</router-link>
 
                         </p>
 
@@ -338,7 +257,6 @@
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Audio</b>
-                             <router-link class="mdb float-right" v-bind:to="'/dashboard/audio'">View All Audio</router-link>
                         </p>
 
                         <table class="table table-striped mb-0">
@@ -347,7 +265,6 @@
                                 <td><b>Title</b></td>
                                 <td><b>Role</b></td>
                                 <td><b>Listen</b></td>
-                                <td><b>Action</b></td>
                             </tr>
 
                             </tbody><tbody>
@@ -356,10 +273,6 @@
                                     <td>{{audio.title}}</td>
                                     <td>{{audio.type}}</td>
                                     <td><a :href="audio.youtube_link" class="btn" target="_blank">Click To Listen</a></td>
-                                    <td>
-                                        
-                                    <a href="#" onclick="return confirm('Are you sure?');" class="btn btn-outline-danger btn-sm">Delete</a>
-                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -375,8 +288,9 @@
 <script>
 import axios from 'axios';
 import Loader from '../template/loader';
+
 export default {
-	name: 'profile',
+	name: 'applicantProfile',
 	data() {
 		return {
 			loading: true,
@@ -404,7 +318,7 @@ export default {
 			headers: { 'Access-Control-Allow-Origin': '*' },
 		};
 
-		let userID = JSON.parse(localStorage.getItem('token'));
+		let userID = this.$route.params.id;
 		// console.log(userID);
 
 		axios({ method: 'GET', url: 'http://api.cast.i.ng/userdetails/' + userID, config }).then(
@@ -420,7 +334,7 @@ export default {
 		);
 
 		// Photos API
-		axios({ method: 'GET', url: 'http://api.cast.i.ng/myphoto/' + userID + '?limit=3', config }).then(
+		axios({ method: 'GET', url: 'http://api.cast.i.ng/myphoto/' + userID, config }).then(
 			result => {
 				this.loading = false;
 				this.photoData = result;
@@ -433,7 +347,7 @@ export default {
 		);
 
 		// Video API
-		axios({ method: 'GET', url: 'http://api.cast.i.ng/myvideo/' + userID + '?limit=2', config }).then(
+		axios({ method: 'GET', url: 'http://api.cast.i.ng/myvideo/' + userID, config }).then(
 			result => {
 				this.loading = false;
 				this.videoData = result;
@@ -457,55 +371,72 @@ export default {
 				console.error(error);
 			}
 		);
+
+		this.token = JSON.parse(localStorage.getItem('token'));
+		console.log(this.token);
+
+		this.loading = true;
+
+		axios.get('https://jsonplaceholder.typicode.com/todos/1').then(
+			response => {
+				this.loading = false;
+				console.log('Page Changes');
+			},
+			error => {
+				this.loading = false;
+				console.log('Page Error');
+			}
+		);
 	},
-	methods: {
-		deleteEducation(eduID) {
-			// confirm('Are you sure?');
-			var config = {
-				headers: { 'Access-Control-Allow-Origin': '*' },
-			};
-
-			axios({ method: 'GET', url: 'http://api.cast.i.ng/delete/education/' + eduID, config }).then(
-				result => {
-					this.loading = false;
-					this.eduData = result;
-					this.error = result.data.status_msg;
-
-					// this.$router.replace(this.$route.query.redirect || '/dashboard/profile');
-				},
-				error => {
-					this.loading = false;
-					console.log('API CALL FAILED');
-					// this.$router.replace(this.$route.query.redirect || '/dashboard/profile');
-					console.error(error);
-				}
-			);
-		},
-		deleteJob(jobID) {
-			// confirm('Are you sure?');
-			var config = {
-				headers: { 'Access-Control-Allow-Origin': '*' },
-			};
-
-			axios({ method: 'GET', url: 'http://api.cast.i.ng/delete/userjob/' + jobID, config }).then(
-				result => {
-					this.loading = false;
-					this.eduData = result;
-					this.error = result.data.status_msg;
-
-					// this.$router.replace(this.$route.query.redirect || '/dashboard/profile');
-				},
-				error => {
-					this.loading = false;
-					console.log('API CALL FAILED');
-					// this.$router.replace(this.$route.query.redirect || '/dashboard/profile');
-					console.error(error);
-				}
-			);
-		},
-	},
+	methods: {},
 };
 </script>
 
 <style>
+.gm-style-mtc {
+	display: none !important;
+}
+.gm-svpc {
+	display: none !important;
+}
+.google-input input {
+	background: white;
+	padding: 7px 21px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	width: 100%;
+	box-sizing: border-box;
+	color: #3c3c3c;
+	font-size: 12px;
+}
+
+.msform input[type='url'],
+.msform input[type='number'],
+.msform input[type='email'],
+.msform input[type='date'],
+.msform input[type='time'] {
+	padding: 6px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	width: 100%;
+	box-sizing: border-box;
+	color: #2c3e50;
+	font-size: 13px;
+}
+.d-inline {
+	display: inline-block;
+}
+.img-preview{
+    width: 100%;
+    height: 140px;
+    border-radius: 8px;
+    background-size: cover!important;
+    background-position: center!important;
+}
+@media only screen and (max-width: 640px) {
+  /* Add your custom styles here for Mobile */
+  .img-preview{
+    height: 200px!important;
+  }
+}
 </style>

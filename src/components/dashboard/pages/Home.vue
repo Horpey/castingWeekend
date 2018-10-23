@@ -56,9 +56,10 @@
                                     <div id="pos">
                                       <ul class="dropdown-menu" x-placement="top-start" style="position: absolute; top: -1085px; left: 0px; will-change: top, left;" x-out-of-boundaries="">
 
-                                            <li v-for="notification in applied.notification_list"><a class="dropdown-item" href="#">{{notification.message}}</a></li>
-
-
+                                            <li v-for="notification in applied.notification_list">
+                                                <!-- <a  href="#">{{notification.message}}</a> -->
+                                                <router-link class="dropdown-item" v-bind:to="'/dashboard/response'+ notification.type + '/' + notification.projectrole_id">{{notification.message}}</router-link>
+                                            </li>
                                         </ul>
                                       </div>
                                     </div> 
@@ -92,54 +93,58 @@ export default {
 	data() {
 		return {
 			loading: true,
-            dashData: "",
-            qualifiedData: "",
-            token: '',
-            siteUrl: "http://stage.cast.i.ng/",
+			dashData: '',
+			qualifiedData: '',
+			token: '',
+			siteUrl: 'http://stage.cast.i.ng/',
 		};
 	},
 	components: {
 		loader: Loader,
 	},
 
-
-
 	mounted() {
-        this.token = JSON.parse(localStorage.getItem('token'));
-        console.log(this.token);
+		this.token = JSON.parse(localStorage.getItem('token'));
+		console.log(this.token);
+		this.loading = true;
 
+		var config = {
+			headers: { 'Access-Control-Allow-Origin': '*' },
+		};
 
-        var config = {
-            headers: {'Access-Control-Allow-Origin': '*'}
-        };
+		let userID = JSON.parse(localStorage.getItem('token'));
+		// console.log(userID);
 
-        let userID = JSON.parse(localStorage.getItem('token'));
-        // console.log(userID);
+		axios({ method: 'GET', url: 'http://api.cast.i.ng/auditions/applied/' + userID, config }).then(
+			result => {
+				this.loading = false;
+				this.dashData = result;
+			},
+			error => {
+				this.loading = false;
+				console.log('API CALL FAILED');
+				console.error(error);
+			}
+		);
 
-        axios({ method: "GET", "url": 'http://api.cast.i.ng/auditions/applied/'+userID , config }).then(result => {
-            
-            this.dashData = result;
-        }, error => {
-            
-            console.log('API CALL FAILED');
-            console.error(error);
-        });
-
-        axios({ method: "GET", "url": 'http://api.cast.i.ng/qualifiedproject/'+userID , config }).then(result => {
-            this.qualifiedData = result;
-        }, error => {
-            console.log('API CALL FAILED');
-            console.error(error);
-        });
-	}
+		axios({ method: 'GET', url: 'http://api.cast.i.ng/qualifiedproject/' + userID, config }).then(
+			result => {
+				this.qualifiedData = result;
+			},
+			error => {
+				console.log('API CALL FAILED');
+				console.error(error);
+			}
+		);
+	},
 };
 </script>
 
 <style>
-.img-full{
-    width: 100%;
+.img-full {
+	width: 100%;
 }
-.cv-pad{
-    padding: 10px 16px!important;
+.cv-pad {
+	padding: 10px 16px !important;
 }
 </style>

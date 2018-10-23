@@ -30,13 +30,15 @@
                                             <div id="pos">
                                                 <ul class="dropdown-menu">
                                                     <li>
-                                                        <a class="dropdown-item" href="http://stage.cast.i.ng/project/edit/">Edit</a>
+                                                        <router-link class="dropdown-item" v-bind:to="'/project/edit/'+recent.id">Edit</router-link>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="http://stage.cast.i.ng/project/roles/9">Manage Roles</a>
+
+                                                        <router-link class="dropdown-item" v-bind:to="'/project/manageRole/'+recent.id">Manage
+                                                            Roles</router-link>
                                                     </li>
                                                     <li>
-                                                        <a class="dropdown-item" href="http://stage.cast.i.ng/delete/project/9">Delete</a>
+                                                        <a style="cursor: pointer;" class="dropdown-item" v-on:click="deleteProject(recent.id)">Delete</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -107,6 +109,38 @@ export default {
             }
         );
     },
+    methods: {
+            deleteProject(projectID) {
+                // confirm('Are you sure?');
+                var config = {
+                    headers: {
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                };
+
+                axios({
+                    method: 'GET',
+                    url: 'http://api.cast.i.ng/delete/project/' + projectID,
+                    config
+                }).then(
+                    result => {
+                        this.loading = false;
+                        this.deleteData = result;
+                        this.error = result.data.status_msg;
+
+                        location.reload();
+
+                        // this.$router.replace(this.$route.query.redirect || '/dashboard/profile');
+                    },
+                    error => {
+                        this.loading = false;
+                        console.log('API CALL FAILED');
+                        // this.$router.replace(this.$route.query.redirect || '/dashboard/profile');
+                        console.error(error);
+                    }
+                );
+            },
+        },
 };
 </script>
 

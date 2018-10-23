@@ -16,7 +16,6 @@
                     </div>
                     <!-- End Logo container-->
 
-
                     <div class="menu-extras topbar-custom">
 
                         <ul class="list-inline float-right mb-0 ">
@@ -24,20 +23,19 @@
                             <li class="list-inline-item dropdown notification-list">
                                 <div class="list-inline-item hide-phone app-search">
                                     <form role="search" class="">
-                                    <div class="form-group pt-1">
-                                        <input type="text" class="form-control" placeholder="Search.." />
-                                        <a href="#"><i class="fa fa-search"></i></a>
-                                    </div>
+                                        <div class="form-group pt-1">
+                                            <input type="text" class="form-control" placeholder="Search.." />
+                                            <a href="#"><i class="fa fa-search"></i></a>
+                                        </div>
                                     </form>
                                 </div>
                             </li>
-
 
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#"
                                     role="button" aria-haspopup="false" aria-expanded="false">
                                     <i class="ti-bell noti-icon"></i>
-                                    <span class="badge badge-danger noti-icon-badge">3</span>
+                                    <span class="badge badge-danger noti-icon-badge">{{notificationCount.data.count}}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
                                     <!-- item-->
@@ -46,23 +44,19 @@
                                     </div>
 
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-primary"><i class="mdi mdi-account"></i></div>
-                                        <p class="notify-details"><b>New audition application</b><small class="text-muted">Babalola
-                                                just applied for your auditions.</small></p>
-                                    </a>
 
-                                    <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <div class="notify-icon bg-success"><i class="mdi mdi-message"></i></div>
-                                        <p class="notify-details"><b>New Message received</b><small class="text-muted">You
-                                                have 87 unread messages</small></p>
-                                    </a>
+                                    <router-link v-bind:to="'/dashboard/notifications'" class="dropdown-item notify-item"
+                                        v-for="notification in notification.data.list" :key="notification">
+                                        <div class="notify-icon bg-primary"><i class="mdi mdi-account"></i></div>
+                                        <p class="notify-details"><b>{{notification.title}}</b><small class="text-muted">{{notification.message}}</small></p>
+                                    </router-link>
+
+
 
                                     <!-- All-->
-                                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        View All
-                                    </a>
+                                    <router-link v-bind:to="'/dashboard/notifications'" class="dropdown-item notify-item">View
+                                        All
+                                    </router-link>
 
                                 </div>
                             </li>
@@ -77,8 +71,12 @@
                                         <div class="dropdown-item noti-title">
                                             <h5>Welcome</h5>
                                         </div>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i>
-                                            {{profileData.data.profile.firstname}}</a>
+                                        <router-link v-bind:to="'/dashboard/profile'" class="dropdown-item">
+                                            <i class="mdi mdi-account-circle m-r-5 text-muted"></i>
+                                            {{profileData.data.profile.firstname}}
+                                        </router-link>
+
+
                                         <div class="dropdown-divider"></div>
                                         <a style="cursor: pointer;" class="dropdown-item" v-on:click="logOut"><i class="mdi mdi-logout m-r-5 text-muted"></i>
                                             Logout</a>
@@ -161,48 +159,90 @@
 </template>
 
 <script>
-import axios from 'axios';
-export default {
-	name: 'navHeader',
-    data(){
-        return {
-            loading: true,
-            profileData: "",
-            token: '',
-            siteUrl: "http://stage.cast.i.ng/",
-        };
-    },
-    methods: {
-        logOut(){
-            localStorage.removeItem('token');
-            this.$router.push('/home');
-            // this.$router.replace(this.$route.query.redirect || '/about')
+    import axios from 'axios';
+    export default {
+        name: 'navHeader',
+        data() {
+            return {
+                loading: true,
+                profileData: '',
+                token: '',
+                notificationCount: '',
+                notification: '',
+                siteUrl: 'http://stage.cast.i.ng/',
+            };
+        },
+        methods: {
+            logOut() {
+                localStorage.removeItem('token');
+                this.$router.push('/home');
+                // this.$router.replace(this.$route.query.redirect || '/about')
+            },
+        },
+        mounted() {
+            this.token = JSON.parse(localStorage.getItem('token'));
+            console.log(this.token);
 
-        }
-    },
-    mounted() {
-        this.token = JSON.parse(localStorage.getItem('token'));
-        console.log(this.token);
+            this.loading = true;
 
-        this.loading = true;
+            var config = {
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+            };
 
-        var config = {
-            headers: {'Access-Control-Allow-Origin': '*'}
-        };
+            let userID = JSON.parse(localStorage.getItem('token'));
+            // console.log(userID);
 
-        let userID = JSON.parse(localStorage.getItem('token'));
-        // console.log(userID);
+            axios({
+                method: 'GET',
+                url: 'http://api.cast.i.ng/userdetails/' + userID,
+                config
+            }).then(
+                result => {
+                    this.loading = false;
+                    this.profileData = result;
+                },
+                error => {
+                    this.loading = false;
+                    console.log('API CALL FAILED');
+                    console.error(error);
+                }
+            );
 
-        axios({ method: "GET", "url": 'http://api.cast.i.ng/userdetails/'+userID , config }).then(result => {
-            this.loading = false;
-            this.profileData = result;
-        }, error => {
-            this.loading = false;
-            console.log('API CALL FAILED');
-            console.error(error);
-        });
-    },
-};
+            axios({
+                method: 'GET',
+                url: 'http://api.cast.i.ng/user/notification/count/' + userID,
+                config
+            }).then(
+                result => {
+                    this.loading = false;
+                    this.notificationCount = result;
+                },
+                error => {
+                    this.loading = false;
+                    console.log('API CALL FAILED');
+                    console.error(error);
+                }
+            );
+
+            axios({
+                method: 'GET',
+                url: 'http://api.cast.i.ng/user/notification/list/' + userID,
+                config
+            }).then(
+                result => {
+                    this.loading = false;
+                    this.notification = result;
+                },
+                error => {
+                    this.loading = false;
+                    console.log('API CALL FAILED');
+                    console.error(error);
+                }
+            );
+        },
+    };
 </script>
 
 <style>

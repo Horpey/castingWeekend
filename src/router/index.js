@@ -24,8 +24,13 @@ import addMedia from '@/components/dashboard/pages/addMedia';
 
 import profile from '@/components/dashboard/user/profile';
 import editprofile from '@/components/dashboard/user/editprofile';
+import editpicture from '@/components/dashboard/user/editpicture';
 
 import video from '@/components/dashboard/pages/video';
+
+import responseaudio from '@/components/dashboard/pages/responseaudio';
+import responsevideo from '@/components/dashboard/pages/responsevideo';
+import notifications from '@/components/dashboard/pages/notifications';
 
 // Director Dashboard
 
@@ -35,25 +40,42 @@ import addProject from '@/components/dashboard/director/pages/addProject';
 import manageAdmin from '@/components/dashboard/director/pages/manageAdmin';
 
 import details from '@/components/dashboard/director/pages/details';
+import edit from '@/components/dashboard/director/pages/edit';
+
 import addRole from '@/components/dashboard/director/pages/addRole';
 import editRole from '@/components/dashboard/director/pages/editRole';
+import manageRole from '@/components/dashboard/director/pages/manageRole';
+
+import applicantProfile from '@/components/dashboard/director/pages/applicantProfile';
+
 
 
 import dirProjects from '@/components/dashboard/director/pages/dirProjects';
 import dirProfile from '@/components/dashboard/director/user/dirProfile';
 import editProfile from '@/components/dashboard/director/user/editProfile';
 import applicants from '@/components/dashboard/director/pages/applicants';
+import viewupload from '@/components/dashboard/director/pages/viewupload';
+import createAudition from '@/components/dashboard/director/pages/createAudition';
+
+
+
 
 
 import dirSchedule from '@/components/dashboard/director/pages/dirSchedule';
 
-
 // Authentication
-import { requireAuth } from '../utils/auth';
+// import { requireAuth } from '../utils/auth';
 
 Vue.use(Router);
 
+
 export default new Router({
+  scrollBehavior() {
+    return {
+      x: 0,
+      y: 0,
+    };
+  },
   routes: [
     {
       path: '/',
@@ -167,9 +189,29 @@ export default new Router({
           component: editprofile,
         },
         {
+          path: 'editpicture',
+          name: 'editpicture',
+          component: editpicture,
+        },
+        {
           path: 'video',
           name: 'video',
           component: video,
+        },
+        {
+          path: 'responseaudio/:id',
+          name: 'responseaudio',
+          component: responseaudio,
+        },
+        {
+          path: 'responsevideo/:id',
+          name: 'responsevideo',
+          component: responsevideo,
+        },
+        {
+          path: 'notifications',
+          name: 'notifications',
+          component: notifications,
         },
         {
           path: 'addMedia',
@@ -233,7 +275,12 @@ export default new Router({
           component: details,
         },
         {
-          path: 'addRole',
+          path: 'edit/:id',
+          name: 'edit',
+          component: edit,
+        },
+        {
+          path: 'addRole/:id',
           name: 'addRole',
           component: addRole,
         },
@@ -243,16 +290,34 @@ export default new Router({
           component: editRole,
         },
         {
+          path: 'manageRole/:id',
+          name: 'manageRole',
+          component: manageRole,
+        },
+        {
           path: 'applicants/:id',
           name: 'applicants',
           component: applicants,
+        },
+        {
+          path: 'applicantProfile/:id',
+          name: 'applicantProfile',
+          component: applicantProfile,
+        },
+        {
+          path: 'viewupload/:id',
+          name: 'viewupload',
+          component: viewupload,
+        },
+        {
+          path: 'createAudition',
+          name: 'createAudition',
+          component: createAudition,
         }
       ],
     },
   ],
 });
-
-
 
 // router.beforeEach((to, from, next) => {
 //   // redirect to login page if not logged in and trying to access a restricted page

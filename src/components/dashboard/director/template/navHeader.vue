@@ -13,7 +13,6 @@
                             <img src="../../../../assets/images/logo.png" alt="" class="logo-large" />
                         </router-link>
 
-
                     </div>
                     <!-- End Logo container-->
 
@@ -71,7 +70,7 @@
                                 <div class="dropdown notification-list nav-pro-img">
                                     <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown"
                                         href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                                        <img src="../../../../assets/images/2.jpg" alt="user" class="rounded-circle" />
+                                        <img :src="profileData.data.profile.image" alt="user" class="rounded-circle" />
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                         <!-- item-->
@@ -79,7 +78,7 @@
                                             <h5>Welcome</h5>
                                         </div>
                                         <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5 text-muted"></i>
-                                            Profile</a>
+                                            {{profileData.data.profile.firstname}}</a>
                                         <div class="dropdown-divider"></div>
                                          <a style="cursor: pointer;" class="dropdown-item" v-on:click="logOut"><i class="mdi mdi-logout m-r-5 text-muted"></i>
                                             Logout</a>
@@ -150,6 +149,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     name: 'navHeader',
     methods: {
@@ -159,6 +159,36 @@ export default {
             // this.$router.replace(this.$route.query.redirect || '/about')
 
         }
+    },
+    data(){
+        return {
+            loading: true,
+            profileData: "",
+            token: '',
+            siteUrl: "http://stage.cast.i.ng/",
+        };
+    },
+    mounted(){
+        this.token = JSON.parse(localStorage.getItem('token'));
+        console.log(this.token);
+
+        this.loading = true;
+
+        var config = {
+            headers: {'Access-Control-Allow-Origin': '*'}
+        };
+
+        let userID = JSON.parse(localStorage.getItem('token'));
+        // console.log(userID);
+
+        axios({ method: "GET", "url": 'http://api.cast.i.ng/userdetails/'+userID , config }).then(result => {
+            this.loading = false;
+            this.profileData = result;
+        }, error => {
+            this.loading = false;
+            console.log('API CALL FAILED');
+            console.error(error);
+        });
     }
 };
 </script>

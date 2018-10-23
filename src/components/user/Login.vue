@@ -103,6 +103,8 @@ export default {
                 }, error => {
                     () => this.loginFailed()
                     console.error(error);
+                    this.formLoading = false;
+                    this.error = 'Login failed!'
                 });
         },
 
