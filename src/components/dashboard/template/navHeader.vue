@@ -228,7 +228,7 @@
 
             axios({
                 method: 'GET',
-                url: 'http://api.cast.i.ng/user/notification/list/' + userID,
+                url: 'http://api.cast.i.ng/user/notification/list/' + userID + '?limit=4',
                 config
             }).then(
                 result => {

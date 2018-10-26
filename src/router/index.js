@@ -31,7 +31,7 @@ import video from '@/components/dashboard/pages/video';
 import responseaudio from '@/components/dashboard/pages/responseaudio';
 import responsevideo from '@/components/dashboard/pages/responsevideo';
 import notifications from '@/components/dashboard/pages/notifications';
-
+import sendVideo from '@/components/dashboard/pages/sendVideo';
 // Director Dashboard
 
 import dirDashboard from '@/components/dashboard/director/index';
@@ -45,6 +45,8 @@ import edit from '@/components/dashboard/director/pages/edit';
 import addRole from '@/components/dashboard/director/pages/addRole';
 import editRole from '@/components/dashboard/director/pages/editRole';
 import manageRole from '@/components/dashboard/director/pages/manageRole';
+
+
 
 import applicantProfile from '@/components/dashboard/director/pages/applicantProfile';
 
@@ -192,6 +194,11 @@ export default new Router({
           path: 'editpicture',
           name: 'editpicture',
           component: editpicture,
+        },
+        {
+          path: 'sendVideo',
+          name: 'sendVideo',
+          component: sendVideo,
         },
         {
           path: 'video',

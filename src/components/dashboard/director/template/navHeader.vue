@@ -135,7 +135,7 @@
 
                             <li class="has-submenu">
                                 <router-link v-bind:to="'/director/schedule'">
-                                    <i class="mdi mdi-cards"></i>Schedule and Appointment
+                                    <i class="mdi mdi-cards"></i>Auditions
                                 </router-link>
                             </li>
                         </ul><!-- End navigation menu -->

@@ -3,36 +3,15 @@
         <loader v-if="loading" />
         <div style="margin-top: 12px;" class="alert" v-bind:class="{ success: status, danger: !status }" v-if="error">{{
             error }}</div>
-        <div class="cv cv-pad" v-for="(allAudition, index) in allAudData.data.list">
-            <div class="row">
-                <div class="col-md-4">
-                    <img class="img-fluid rounded mb-3" :src="allAudition.image">
-                </div>
-                <div class="col-md-8">
-                    <h3><a href="#" class="col-bb">{{allAudition.name}}</a></h3>
-                    <p>
-                        <b class="col-ppd">Role Description</b>:
-                        <span v-html="allAudition.description"></span>
-                    </p>
-                    <p v-if="!allAudition.applied">
-                        <!-- <button v-on:click="applyAudtion(allAudition.id)" class="btn btn-ppd border-0">
-                            <img v-if="formLoading" class="form-loader" src="../../../assets/images/white-loader.svg"
-                                alt="Loader" />
-                            <span v-if="!formLoading">Apply</span>
-                        </button> -->
+        <div class="card m-b-30">
+            <div class="card-body">
+                <p class="cv1"><b class="col-ppd">Send Video</b> 
+                    <router-link v-bind:to="'/dashboard/projects'" lass="mdb float-right text-white" style="cursor: pointer;">More Projects</router-link>
+                </p>
 
-                        <router-link v-bind:to="'/dashboard/sendVideo'" class="btn btn-ppd border-0">Apply
-                                </router-link>
-                    </p>
 
-                    <p v-if="allAudition.applied" class="mb-4">
-                        <b class="col-ppd">Status</b>:
-                        <span class="badge badge-success">{{allAudition.status}}</span>
-                    </p>
-                </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -41,7 +20,7 @@
     import Loader from '../template/loader';
 
     export default {
-        name: 'allAuditions',
+        name: 'sendVideo',
         data() {
             return {
                 loading: true,

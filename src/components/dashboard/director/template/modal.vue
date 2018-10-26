@@ -265,6 +265,27 @@
             </div>
         </div>
          <!-- Rate Applicant -->
+
+
+         <!-- event Success -->
+         <div class="modal fade" id="eventAdded" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" style="display: none;"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                    </div>
+                    <div class="modal-body text-center">
+                        <img class="success-icon img-responsive" src="../../../../assets/images/successch.svg"/>
+                        <h1 class="text-succ">Event Added Successfully</h1>
+                        <hr>
+                        <!-- <router-link v-on:click="closeModall" v-bind:to="'/director/projects'" class="mdb sched text-white" style="padding: 9px 28px;border: 0px!important;cursor: pointer;">See Projects
+                                </router-link> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+         <!-- event Success -->
     </div>
 </template>
 
@@ -453,5 +474,11 @@ export default {
 .btn-ppd:hover {
 	background-color: #3f0047 !important;
 	color: white !important;
+}
+.success-icon{
+    width: 100px;
+}
+.text-succ{
+    font-size: 22px;
 }
 </style>

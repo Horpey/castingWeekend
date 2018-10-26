@@ -2,7 +2,7 @@
   "name": "casting",
   "version": "1.0.0",
   "description": "Casting PWA Project",
-  "author": "Seyike",
+  "author": "Adeniran Opeyemi",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
