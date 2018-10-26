@@ -22,6 +22,8 @@ import audio from '@/components/dashboard/pages/audio';
 import photo from '@/components/dashboard/pages/photo';
 import addMedia from '@/components/dashboard/pages/addMedia';
 
+import settings from '@/components/dashboard/pages/settings';
+
 import profile from '@/components/dashboard/user/profile';
 import editprofile from '@/components/dashboard/user/editprofile';
 import editpicture from '@/components/dashboard/user/editpicture';
@@ -224,6 +226,11 @@ export default new Router({
           path: 'addMedia',
           name: 'addMedia',
           component: addMedia,
+        },
+        {
+          path: 'settings',
+          name: 'settings',
+          component: settings,
         },
       ],
     },

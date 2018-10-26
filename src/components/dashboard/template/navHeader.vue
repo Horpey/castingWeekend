@@ -57,6 +57,9 @@
                                     <router-link v-bind:to="'/dashboard/notifications'" class="dropdown-item notify-item">View
                                         All
                                     </router-link>
+                                    <!-- All-->
+                                    <router-link v-bind:to="'/dashboard/settings'" class="dropdown-item notify-item settings"><span class="fa fa-cog"></span>  Notifictions Settings
+                                    </router-link>
 
                                 </div>
                             </li>
@@ -246,4 +249,9 @@
 </script>
 
 <style>
+.settings, .settings:hover{
+    background-color: #3f0048;
+    color: white;
+    font-weight: bold;
+}
 </style>
