@@ -21,7 +21,7 @@
 
                         <ul class="list-inline float-right mb-0 ">
 
-                            <li class="list-inline-item dropdown notification-list">
+                            <!-- <li class="list-inline-item dropdown notification-list">
                                 <div class="list-inline-item hide-phone app-search">
                                     <form role="search" class="">
                                     <div class="form-group pt-1">
@@ -30,7 +30,7 @@
                                     </div>
                                     </form>
                                 </div>
-                            </li>
+                            </li> -->
 
 
                             <li class="list-inline-item dropdown notification-list">
