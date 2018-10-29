@@ -11,17 +11,27 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "firebase": "^5.5.6",
+    "html2canvas": "^1.0.0-alpha.12",
+    "jspdf": "^1.4.1",
     "moment": "^2.22.2",
+    "node-sass": "^4.9.4",
+    "sass-loader": "^7.1.0",
     "vee-validate": "^2.1.0-beta.9",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.4",
+    "vue-goodshare": "^1.1.0",
+    "vue-head": "^2.0.12",
+    "vue-infinite-loading": "^2.4.0",
     "vue-moment-lib": "^1.2.2",
     "vue-router": "^3.0.1",
+    "vue-scroller": "^2.2.4",
     "vue-stars": "^1.0.0",
     "vue-switches": "^2.0.1",
     "vue-top-progress": "^0.7.0",
     "vue2-google-maps": "^0.10.2",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "web-push": "^3.3.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",

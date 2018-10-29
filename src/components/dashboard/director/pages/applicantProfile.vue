@@ -1,7 +1,9 @@
 <template>
     <div>
         <loader v-if="loading"/>
-        <div class="card m-b-30">
+        <div id="editor"></div>
+        <div id="appendImg"></div>
+        <div id="capture" class="card m-b-30">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-3">
@@ -10,28 +12,64 @@
 
                     </div>
                     <div class="col-md-9">
-                        <h4>{{profileData.data.profile.lastname}} {{profileData.data.profile.firstname}}</h4>
+
+                        <h4>{{profileData.data.profile.lastname}} {{profileData.data.profile.firstname}}
+                        
+                        <a v-on:click="pdfGenerate" class="asPDF" style="cursor: pointer;">
+                                        <span class="fa fa-file-pdf-o"></span>  Download PDF</a>
+                        </h4>
+                        
                         <hr>
                         <div class="d-inline">
                             <button class="btn btn-secondary" data-toggle="modal" data-target="#rateApplicant" >
                                 Rate Applicant </button>
                         </div>
 
+
                         <div class="dropdown d-inline">
                             <button type="button" data-toggle="dropdown" class="btn btn-secondary dropdown-toggle" aria-expanded="false">
                                 Share Profile<span class="caret"></span></button>
                             <div id="pos">
                                 <ul class="dropdown-menu">
-                                    <li><a target="_blank" href="#" class="dropdown-item">Facebook</a></li>
-                                    <li><a target="_blank" href="#" class="dropdown-item">Twitter</a></li>
-                                    <li><a target="_blank" href="#" class="dropdown-item">Download PDF</a></li>
+                                    <li>
+                                        <vue-goodshare-facebook
+                                            :page_url="currentUrl"
+                                            title_social="Facebook"
+                                            button_design="gradient"
+                                            has_icon
+                                          ></vue-goodshare-facebook>
+                                    </li>
+                                    <li>
+                                        <vue-goodshare-twitter
+                                            :page_url="currentUrl"
+                                            title_social="Twitter"
+                                            button_design="gradient"
+                                            has_icon
+                                          ></vue-goodshare-twitter>
+                                    </li>
+                                    <li>
+                                        <vue-goodshare-LinkedIn
+                                            :page_url="currentUrl"
+                                            title_social="LinkedIn"
+                                            button_design="gradient"
+                                            has_icon
+                                          ></vue-goodshare-LinkedIn>
+                                    </li>
+                                    <li>
+                                        <vue-goodshare-WhatsApp
+                                            :page_url="currentUrl"
+                                            title_social="WhatsApp"
+                                            button_design="gradient"
+                                            has_icon
+                                          ></vue-goodshare-WhatsApp>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="mt-2">
+                <div >
+                    <div class="mt-2" >
                         <p class="cv1">
                             <b class="col-ppd">Feature Film</b>
                         </p>
@@ -66,7 +104,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">TV Series</b>
@@ -102,7 +139,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Web Series</b>
@@ -137,7 +173,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Theater/Stage Plays</b>
@@ -175,8 +210,7 @@
                             </table>
                         </div>
                     </div>
-
-                    <div class="mt-3">
+                    <div class="mt-3" id="content">
                         <p class="cv1">
                             <b class="col-ppd">Social Handles</b>
                         </p>
@@ -194,7 +228,6 @@
                             <i class="fa fa-2x fa-instagram" style="color:#da1a42;"></i>
                         </a>
                     </div>
-
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Trainings And Education</b>
@@ -212,7 +245,6 @@
                             </tbody>
                         </table>
                     </div>
-
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Photo</b>
@@ -226,7 +258,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Video</b>
@@ -253,7 +284,6 @@
 
                         </div>
                     </div>
-
                     <div class="mt-3">
                         <p class="cv1">
                             <b class="col-ppd">Audio</b>
@@ -277,7 +307,6 @@
                             </tbody>
                         </table>
                     </div>
-
                 </div>
             </div>
 
@@ -288,6 +317,17 @@
 <script>
 import axios from 'axios';
 import Loader from '../template/loader';
+
+// Social Sharing
+import VueGoodshareFacebook from "vue-goodshare/src/providers/Facebook.vue";
+import VueGoodshareTwitter from "vue-goodshare/src/providers/Twitter.vue";
+import VueGoodshareLinkedIn from "vue-goodshare/src/providers/LinkedIn.vue";
+import VueGoodshareWhatsApp from "vue-goodshare/src/providers/WhatsApp.vue";
+import html2canvas from 'html2canvas';
+import * as jsPDF from 'jspdf'
+
+
+
 
 export default {
 	name: 'applicantProfile',
@@ -301,14 +341,23 @@ export default {
 			audioData: '',
 			eduData: '',
 			error: '',
+            currentUrl: '',
 			formLoading: '',
 			siteUrl: 'http://stage.cast.i.ng/',
+            siteUrlshare: 'http://stage.cast.i.ng',
 		};
 	},
 	components: {
 		loader: Loader,
+        VueGoodshareFacebook,
+        VueGoodshareTwitter,
+        VueGoodshareLinkedIn,
+        VueGoodshareWhatsApp
 	},
 	mounted() {
+
+        this.currentUrl = this.siteUrlshare + this.$route.path;
+
 		this.token = JSON.parse(localStorage.getItem('token'));
 		console.log(this.token);
 
@@ -388,7 +437,36 @@ export default {
 			}
 		);
 	},
-	methods: {},
+	methods: {
+        pdfGenerate(){
+            html2canvas(document.querySelector("#capture")).then(canvas => {
+                // document.body.appendChild(canvas)
+
+                $("#appendImg").append(canvas);
+
+                var doc = new jsPDF();
+                var specialElementHandlers = {
+                    '#editor': function (element, renderer) {
+                        return true;
+                    }
+                };
+
+
+                doc.addImage(canvas, 'JPEG', 10, 10, 180, 200);
+
+                // doc.fromHTML($('#appendImg').html(), 15, 15, {
+                //         'width': 170,
+                //             'elementHandlers': specialElementHandlers
+                //     });
+                    doc.save(this.profileData.data.profile.lastname + '.pdf');
+
+            });
+            
+        },
+        downloadImg(){
+
+        }
+    },
 };
 </script>
 
@@ -432,6 +510,30 @@ export default {
     border-radius: 8px;
     background-size: cover!important;
     background-position: center!important;
+}
+.dropdown-menu li a {
+    color: white!important;
+    width: 97%;
+}
+.dropdown-menu{
+    padding: 6px;
+    left: 86px!important;
+}
+#appendImg{
+    display: none;
+}
+.asPDF{
+    float: right;
+    border-radius: 3px;
+    color: white!important;
+    background-color: #de0202;
+    padding: 7px 10px;
+    font-size: 12px;
+    margin-bottom: 18px;
+    margin: -5px 1.5px;
+}
+.asPDF span{
+    margin-right: 10px;
 }
 @media only screen and (max-width: 640px) {
   /* Add your custom styles here for Mobile */
